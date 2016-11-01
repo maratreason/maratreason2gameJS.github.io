@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, user-scalable=no"/>
+	<title>Минимальный игровой код PointJS</title>
+</head>
+<body>
+<script type="text/javascript" src="point.js"></script>
+<script type="text/javascript" src="engine.js"></script>
+<script type="text/javascript" src="interface.js"></script>
+<script type="text/javascript" src="level.js"></script>
+<script type="text/javascript">
+
+
+//мы сделали createLevel и теперь его можно применять для следующего уровня или замены уток на другие рисунки
+createLevel({
+	fonFile : 'img/fon.jpg',
+	topCount : 14,
+	topFile : 'img/utka.png'
+});
+
+
+
+
+//Создание игрового цикла
+
+	game.newLoop('game', function(){
+		game.fill('#D9D9D9');
+
+	fire = false;
+
+	drawFon();
+
+	drawTop();
+	drawInterface();
+
+	//проверка был ли совершен выстрел
+	if(fire){
+		fireTop();
+	}
+
+});
+//Старт игрового цикла
+	game.startLoop('game');	
+
+</script>
+
+</body>
+</html>
